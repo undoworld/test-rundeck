@@ -1,0 +1,12 @@
+    - name: install httpd
+      yum: name=httpd
+    - name: enabled httpd
+      service: name=httpd enabled=yes state=started
+    - name: install libselinux-python
+      yum: name=libselinux-python
+    - name: index.html
+      template: src=index.html.j2 dest=/var/www/html/index.html owner=root group=root mode=644
+    - name: phpinfo
+      copy: src=phpinfo.php dest=/var/www/html/phpinfo.php owner=root group=root mode=644
+
+ 
